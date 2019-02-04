@@ -3,7 +3,7 @@
  */
 const {
   getBookListWithoutRating,
-  getRatingFromBookId, getBooksWithRating,
+  getRatingFromBookId, getBooksWithRating, getBooksWithRatingByAuthor,
 } = require('./../../../../src/utils/books/index');
 
 describe('getBookListWithoutRating', () => {
@@ -24,5 +24,14 @@ describe('getBooksWithRating', () => {
   it('should fetch books with their rating', async () => {
     const booksWithRatings = await getBooksWithRating();
     expect(booksWithRatings[0].rating).not.toEqual(null);
+  });
+});
+
+describe('getBooksWithRatingByAuthor', () => {
+  it('should return result grouped by authors', async () => {
+    const booksWithRatingsByAuthor = await getBooksWithRatingByAuthor();
+    const authors = Object.keys(booksWithRatingsByAuthor);
+    expect((authors.length > 0)).toEqual(true);
+    expect(Array.isArray(booksWithRatingsByAuthor[authors[0]])).toEqual(true);
   });
 });

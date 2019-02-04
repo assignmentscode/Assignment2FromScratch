@@ -17,9 +17,19 @@ const getBooksWithRating = () => getBookListWithoutRating().then((allBooks) => {
       (rating, index) => Object.assign(allBooksCopy[index], rating),
     ));
 });
+const getBooksWithRatingByAuthor = () => getBooksWithRating()
+  .then(allBooksWithRating => allBooksWithRating.reduce((acc, val) => {
+    if (val.Author in acc) {
+      acc[val.Author].push(val);
+    } else {
+      acc[val.Author] = [val];
+    }
+    return acc;
+  }, {}));
 
 module.exports = {
   getBookListWithoutRating,
   getRatingFromBookId,
   getBooksWithRating,
+  getBooksWithRatingByAuthor,
 };
