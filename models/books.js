@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     author: DataTypes.STRING,
     rating: DataTypes.FLOAT,
+    likes: DataTypes.BOOLEAN,
   }, {});
   books.storeData = (inputId, inputBookName, inputAuthorName, inputRating) => books.create({
     id: inputId,
