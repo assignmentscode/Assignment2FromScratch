@@ -18,5 +18,25 @@ module.exports = (sequelize, DataTypes) => {
   books.getBookDetailsById = inputId => books.findOne({
     where: { id: inputId },
   }).then(response => response);
+  books.setLike = inputId => books.update(
+    {
+      likes: true,
+    },
+    {
+      where: {
+        id: inputId,
+      },
+    },
+  ).then(rowsAffected => rowsAffected);
+  books.disLike = inputId => books.update(
+    {
+      likes: false,
+    },
+    {
+      where: {
+        id: inputId,
+      },
+    },
+  ).then(rowsAffected => rowsAffected);
   return books;
 };

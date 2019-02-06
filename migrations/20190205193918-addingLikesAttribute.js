@@ -8,7 +8,7 @@ module.exports = {
     */
 
 
-  down: (queryInterface, Sequelize) => queryInterface.removeColumn('books', 'likes')
+  down: queryInterface => queryInterface.removeColumn('books', 'likes')
   /*
       Add reverting commands here.
       Return a promise to correctly handle asynchronicity.

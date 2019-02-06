@@ -1,7 +1,7 @@
 const storeBookDetailsInDatabase = require('./../utils/books/storeDetails');
 
 module.exports = {
-  method: 'GET',
+  method: 'POST',
   path: '/storeBooks',
   handler: async (request, h) => {
     const result = await storeBookDetailsInDatabase();
